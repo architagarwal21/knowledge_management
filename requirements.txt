@@ -2,3 +2,4 @@ pandas
 edgedb
 requests
 numpy
+nltk
