@@ -29,7 +29,7 @@ def extract_top_notes(perfume_description):
             return [note.strip() for note in notes_list if note.strip()]
     else:
         return []
-    
+  
 nltk.download('punkt')
 def preprocess_reviews(reviews):
     sentences = sent_tokenize(reviews)

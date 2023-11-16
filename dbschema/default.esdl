@@ -21,15 +21,13 @@ module default {
     type ScentGroup {
         required property name -> str;
         multi link has_perfumes := .<belongs_to[is Perfume];
-	    multi link has_notes := .<belongs_to[is Notes];
 	    constraint exclusive on (.name);
     }
 
     type Notes {
         required property name -> str;
-	    link belongs_to -> ScentGroup;
         multi link has_perfumes := .<contains[is Perfume];
-	    constraint exclusive on ((.name, .belongs_to));
+	    constraint exclusive on ((.name));
     }
 
     type Review {
