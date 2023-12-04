@@ -1,0 +1,17 @@
+<!-- frontend/templates/search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    {% for item in results %}
+        <div>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
+            <!-- ... display other properties -->
+        </div>
+    {% endfor %}
+</body>
+</html>
