@@ -34,10 +34,10 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// //query := r.FormValue("query")
-	// log.Println("Search Query:") // Print the query to the server log
+	// log.println("Search Query:") // Print the query to the server log
 	if r.Method == "POST" {
 		if err := r.ParseForm(); err != nil {
-			http.Error(w, "ParseForm() error", http.StatusInternalServerError)
+			HTTP.Error(w, "ParseForm() error", http.StatusInternalServerError)
 			fmt.Println("What's happening?")
 			fmt.Println(err)
 			return
@@ -83,7 +83,7 @@ func main() {
 
     // Add headers, e.g., Content-Type and Authorization (API Key)
     req.Header.Set("Content-Type", "application/json")
-    req.Header.Set("Authorization", "Bearer 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")
+    req.Header.Set("Authorization", "apikey (please contact me for this key, Github doesn't allow me put it here"))
 
     // Create a Client and send the request
     client := &http.Client{}
