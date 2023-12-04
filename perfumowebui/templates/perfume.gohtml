@@ -1,0 +1,90 @@
+<!-- index.gohtml -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumo: A Search Engine</title>
+    <style>
+        body {
+            background-color: purple;
+            font-family: Roboto, sans-serif;
+            color: white;
+            text-align: left;
+        }
+        .header {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .search-container {
+            margin-top: 50px;
+        }
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .search-container button {
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #eee;
+        }
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100; /* Keep the video behind other elements */
+        }
+        .fullscreen-bg__video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            background: url('fallback_image.jpg') no-repeat center center scroll; 
+            background-size: cover; /* Fallback image */
+        }
+    </style>
+    <script>
+        function sendQuery() {
+            var xhr = new XMLHttpRequest();
+            var query = document.getElementById("query").value;
+            xhr.open("POST", "/search", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    // Handle response here, e.g., display a message
+                    console.log(this.responseText);
+                }
+            }
+            xhr.send("query=" + encodeURIComponent(query));
+        }
+    </script>
+</head>
+<body>
+    <div class="header">Perfumo: A Search Engine</div>
+    <div class="search-container">
+        <input type="text" id="query" placeholder="Search perfumes...">
+        <button onclick="sendQuery()">Search</button>
+    </div>
+
+    <div class="fullscreen-bg">
+        <video loop muted autoplay class="fullscreen-bg__video">
+            <source src="https://cdn.shopify.com/videos/c/o/v/62f866e9d6394a5d9ff8cbf43dfddbc4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</body>
+</html>
